@@ -37,8 +37,6 @@ function MatrixCanvas({ active }) {
 
       ctx.fillStyle = '#FF1493';
       ctx.font = `${fontSize}px "Share Tech Mono", monospace`;
-      ctx.shadowColor = '#FF1493';
-      ctx.shadowBlur = 8;
 
       const speed = falling ? Math.max(0.2, 1 - (elapsed - 6) * 0.5) : 1;
 
@@ -61,7 +59,6 @@ function MatrixCanvas({ active }) {
       });
 
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
       frameRef.current = requestAnimationFrame(draw);
     };
 
@@ -174,7 +171,7 @@ export default function Act1Matrix({ onDone }) {
               fontSize: 'clamp(70px, 18vw, 180px)',
               color: '#fff',
               lineHeight: 1.1,
-              textShadow: '0 0 10px #fff, 0 0 25px #FF6EB4, 0 0 50px #FF1493, 0 0 90px #FF1493, 0 0 130px #C2185B',
+              textShadow: '0 0 15px rgba(255,104,180,0.8), 0 0 35px rgba(255,20,147,0.6)',
             } : isHBD ? {
               fontFamily: "'Cinzel', serif",
               fontWeight: 900,
@@ -182,7 +179,7 @@ export default function Act1Matrix({ onDone }) {
               color: '#fff',
               letterSpacing: '0.15em',
               lineHeight: 1.15,
-              textShadow: '0 0 8px #fff, 0 0 20px #FF1493, 0 0 40px #FF1493, 0 0 70px #FF1493, 0 0 100px #C2185B',
+              textShadow: '0 0 12px rgba(255,20,147,0.8), 0 0 30px rgba(255,20,147,0.5)',
             } : {};
 
             const wordTransition = isName
@@ -193,8 +190,8 @@ export default function Act1Matrix({ onDone }) {
               <AnimatePresence key={w}>
                 {wordIndex >= i && (
                   <motion.div
-                    initial={{ scale: 0.5, opacity: 0, y: 20, filter: 'blur(8px)' }}
-                    animate={{ scale: isName ? [0.5, 1.12, 1] : 1, opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    initial={{ scale: 0.5, opacity: 0, y: 20 }}
+                    animate={{ scale: isName ? [0.5, 1.12, 1] : 1, opacity: 1, y: 0 }}
                     transition={wordTransition}
                     style={wordStyle}
                   >

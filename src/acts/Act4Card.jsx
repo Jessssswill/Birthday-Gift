@@ -113,7 +113,7 @@ function GiftBoxPopup({ onOpen }) {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const isMobile = vw < 768;
-    const COUNT = isMobile ? 50 : 80;
+    const COUNT = isMobile ? 35 : 80;
     const items = Array.from({ length: COUNT }, (_, i) => {
       // 1. Bouquet Phase (The Dome shape from the screenshot)
       const heightRatio = Math.random();
