@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useActFlow } from './hooks/useActFlow';
-import { SkipButton } from './components/SkipButton';
 import Act1Matrix from './acts/Act1Matrix';
 import Act2Space from './acts/Act2Space';
 import Act3Transition from './acts/Act3Transition';
@@ -76,8 +75,6 @@ export default function App() {
         </AnimatePresence>
       </div>
 
-      {/* DEV: Skip button */}
-      <SkipButton currentIndex={currentIndex} goTo={goTo} />
     </div>
   );
 }
