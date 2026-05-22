@@ -6,6 +6,7 @@ import Act3Transition from './acts/Act3Transition';
 import Act4Card from './acts/Act4Card';
 import { useState, useEffect } from 'react';
 import Act6Scrapbook from './acts/Act6Scrapbook';
+import { OrientationOverlay } from './components/OrientationOverlay';
 
 const ACT2_PHASES = ['act2-loading', 'act2-modal', 'act2-main'];
 const ACT4_PHASES = ['act4-envelope', 'act4-card', 'act4-gift'];
@@ -27,12 +28,9 @@ export default function App() {
 
   const containerStyle = {
     position: 'fixed',
-    top: isPortrait ? '50%' : 0,
-    left: isPortrait ? '50%' : 0,
-    width: isPortrait ? '100dvh' : '100%',
-    height: isPortrait ? '100dvw' : '100dvh',
-    transform: isPortrait ? 'translate(-50%, -50%) rotate(-90deg)' : 'none',
-    transformOrigin: 'center',
+    inset: 0,
+    width: '100%',
+    height: '100dvh',
     overflow: 'hidden',
     background: '#0a0a0a',
   };
@@ -89,6 +87,7 @@ export default function App() {
 
         </AnimatePresence>
       </div>
+      <OrientationOverlay />
     </div>
   );
 }
