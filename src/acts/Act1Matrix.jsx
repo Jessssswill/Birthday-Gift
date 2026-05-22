@@ -93,7 +93,6 @@ function FloatingParticles() {
             position: 'absolute',
             width: 4, height: 4, borderRadius: '50%',
             background: Math.random() > 0.5 ? '#FF1493' : '#FFB6C1',
-            boxShadow: '0 0 8px #FF1493'
           }}
         />
       ))}
@@ -194,7 +193,7 @@ export default function Act1Matrix({ onDone }) {
               fontSize: 'clamp(70px, 18vw, 180px)',
               color: '#fff',
               lineHeight: 1.1,
-              textShadow: '0 0 10px #fff, 0 0 20px #FF1493, 0 0 40px #FF1493',
+              textShadow: '0 0 20px #FF1493',
             } : isHBD ? {
               fontFamily: "'Cinzel', serif",
               fontWeight: 900,
@@ -202,7 +201,7 @@ export default function Act1Matrix({ onDone }) {
               color: '#fff',
               letterSpacing: '0.15em',
               lineHeight: 1.15,
-              textShadow: '0 0 10px #fff, 0 0 20px #FF1493, 0 0 40px #FF1493',
+              textShadow: '0 0 20px #FF1493',
             } : {};
 
             const wordTransition = isName
