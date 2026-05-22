@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  touch-action: manipulation;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px #FF1493, 0 0 40px rgba(255,20,147,0.4); }
+  50% { box-shadow: 0 0 30px #FF1493, 0 0 60px rgba(255,20,147,0.6); }
+}
+
+/* react-pageflip — force opaque pages so starfield doesn't bleed through */
+.love-book       { filter: drop-shadow(0 30px 60px rgba(255,20,147,0.3)); }
+.book-page       { background: #FFF8FA !important; }
+.book-page-cover { background: linear-gradient(145deg,#D6336C 0%,#E91E63 45%,#AD1457 100%) !important; }
