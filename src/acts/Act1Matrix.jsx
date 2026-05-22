@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const KATAKANA = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝ0123456789';
@@ -79,6 +79,28 @@ function MatrixCanvas({ active }) {
 const COUNTDOWN_NUMS = ['3', '2', '1'];
 const WORDS = ['HAPPY', 'BIRTHDAY', 'Angeline Alexis', '💖'];
 
+function FloatingParticles() {
+  const particles = useMemo(() => Array.from({ length: 35 }), []);
+  return (
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
+      {particles.map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: '100vh', x: `${Math.random() * 100}vw`, opacity: 0, scale: Math.random() * 0.8 + 0.2 }}
+          animate={{ y: '-10vh', opacity: [0, 0.6, 0], x: `${Math.random() * 100}vw` }}
+          transition={{ duration: 4 + Math.random() * 6, repeat: Infinity, delay: Math.random() * 4, ease: 'linear' }}
+          style={{
+            position: 'absolute',
+            width: 4, height: 4, borderRadius: '50%',
+            background: Math.random() > 0.5 ? '#FF1493' : '#FFB6C1',
+            boxShadow: '0 0 8px #FF1493'
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Act1Matrix({ onDone }) {
   const [phase, setPhase] = useState('rain'); // rain | countdown | words | heart | done
   const [countNum, setCountNum] = useState(0);
@@ -131,6 +153,7 @@ export default function Act1Matrix({ onDone }) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100dvh', background: '#0a0a0a', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <MatrixCanvas active={isRaining} />
+      {!isRaining && <FloatingParticles />}
 
       {/* Countdown */}
       <AnimatePresence mode="wait">
@@ -171,7 +194,7 @@ export default function Act1Matrix({ onDone }) {
               fontSize: 'clamp(70px, 18vw, 180px)',
               color: '#fff',
               lineHeight: 1.1,
-              textShadow: '0 0 15px rgba(255,104,180,0.8), 0 0 35px rgba(255,20,147,0.6)',
+              textShadow: '0 0 10px #fff, 0 0 20px #FF1493, 0 0 40px #FF1493',
             } : isHBD ? {
               fontFamily: "'Cinzel', serif",
               fontWeight: 900,
@@ -179,7 +202,7 @@ export default function Act1Matrix({ onDone }) {
               color: '#fff',
               letterSpacing: '0.15em',
               lineHeight: 1.15,
-              textShadow: '0 0 12px rgba(255,20,147,0.8), 0 0 30px rgba(255,20,147,0.5)',
+              textShadow: '0 0 10px #fff, 0 0 20px #FF1493, 0 0 40px #FF1493',
             } : {};
 
             const wordTransition = isName
