@@ -196,13 +196,12 @@ export default function Act2Space({ phase, onPhaseChange, onContinue }) {
           enabled={introDone}
           enableDamping
           dampingFactor={0.05}
-          enablePan={false}
+          enablePan={true}
           enableZoom={true}
           minDistance={7}
           maxDistance={45}
           autoRotate={introDone}
           autoRotateSpeed={0.4}
-          touches={{ ONE: 1, TWO: 2 }}
           minPolarAngle={Math.PI / 6}
           maxPolarAngle={Math.PI * 5 / 6}
         />
